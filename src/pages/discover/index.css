@@ -1,0 +1,24 @@
+.discover-header {
+  height: 30px;
+  background-color: #c20c0c;
+}
+.discover-header .wrap-v2 {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.discover-header .wrap-v2 .item {
+  margin: 0 40px;
+  color: #fff;
+  padding: 2px 10px;
+  text-decoration: none;
+}
+.discover-header .wrap-v2 .item:hover {
+  background-color: #9b0909;
+  border-radius: 10px;
+}
+.discover-header .wrap-v2 .active {
+  background-color: #9b0909;
+  border-radius: 10px;
+}
