@@ -7,17 +7,6 @@ import { renderRoutes } from 'react-router-config'
 import { useState, useEffect } from 'react'
 
 export default memo(function Discover(props) {
-  // useEffect(() => {
-  //   async function fetch() {
-  //     try {
-  //       const { banners } = await request('/banner')
-  //       console.log(banners);
-  //     } catch (error) {
-
-  //     }
-  //   }
-  //   fetch()
-  // })
   const { route } = props
   return (
     <div className='discover-header'>
