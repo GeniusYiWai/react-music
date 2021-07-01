@@ -1,0 +1,10 @@
+.rk-container {
+  display: flex;
+  flex-direction: column;
+}
+.rk-container .rk-item {
+  width: 150px;
+  background-color: #fff;
+  padding: 5px;
+  margin: 1px;
+}

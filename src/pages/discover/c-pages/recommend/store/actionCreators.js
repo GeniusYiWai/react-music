@@ -45,7 +45,7 @@ const changeSettleSingsAction = res => ({
 
 const changeRankList = res => ({
   type: actionTypes.CHANGE_RANK,
-  list: res.playlist.tracks.slice(0, 9)
+  list: res.playlist.tracks.slice(0, 10)
 })
 
 export const getRankList = idx => {

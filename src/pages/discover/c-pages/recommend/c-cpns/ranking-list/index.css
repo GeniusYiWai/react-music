@@ -1,0 +1,7 @@
+.rk-wrap{
+  width: 980px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around
+}

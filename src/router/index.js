@@ -21,7 +21,7 @@ const routes = [
     path: '/discover',
     exact: true,
     render: () => {
-      return <Redirect to='/discover/recommend' />
+      return <Redirect to='/discover/ranking' />
     }
   },
   {
