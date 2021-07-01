@@ -1,40 +1,21 @@
-import React, { useEffect, memo } from 'react';
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import React, { memo, useEffect } from 'react'
+import THR from '@/components/theme-header-rcm'
 
-import {
-  getTopData
-} from "../../store/actionCreators";
+import { useDispatch, useSelector } from 'react-redux'
+import { getRankList } from '../../store/actionCreators'
+export default memo(function Index() {
+  const dispatch = useDispatch()
+  const rankList = useSelector(state => state.recommend.rankList)
 
-import HYThemeHeaderRCM from '@/components/theme-header-rcm';
-import HYTopRanking from "@/components/top-ranking";
-import {
-  RankingWrapper
-} from "./style";
-
-export default memo(function HYRankingList() {
-  // redux
-  const dispatch = useDispatch();
-  const state = useSelector((state) => ({
-    topUpList: state.getIn(["recommend", "topUpList"]),
-    topNewList: state.getIn(["recommend", "topNewList"]),
-    topOriginList: state.getIn(["recommend", "topOriginList"])
-  }), shallowEqual);
-
-  // hooks
   useEffect(() => {
-    dispatch(getTopData(0));
-    dispatch(getTopData(2));
-    dispatch(getTopData(3));
+    dispatch(getRankList(0))
+    dispatch(getRankList(2))
+    dispatch(getRankList(3))
+   
   }, [dispatch])
-
   return (
-    <RankingWrapper>
-      <HYThemeHeaderRCM title="榜单" moreLink="/discover/ranking"/>
-      <div className="tops">
-        <HYTopRanking info={state.topUpList}/>
-        <HYTopRanking info={state.topNewList}/>
-        <HYTopRanking info={state.topOriginList}/>
-      </div>
-    </RankingWrapper>
+    <div className='wrap-v2'>
+      <THR title='榜单' />
+    </div>
   )
 })

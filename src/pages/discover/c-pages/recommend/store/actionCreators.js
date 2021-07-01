@@ -1,53 +1,65 @@
-import * as actionTypes from "./constants";
+import * as actionTypes from './constants'
 
-import { 
+import {
   getTopBanner,
   getHotRecommend,
   getNewAlbum,
   getTopList,
   getArtistList
-} from "@/services/recommend";
+} from '@/services/recommend'
 
-const changeBannerAction = (res) => ({
+const changeBannerAction = res => ({
   type: actionTypes.CHANGE_TOP_BNNAER,
   banners: res.banners
 })
 
-const changeRecommendAction = (res) => ({
+const changeRecommendAction = res => ({
   type: actionTypes.CHANGE_HOT_RECOMMEND,
   recommends: res.result
 })
 
-const changeNewAlbumAction = (res) => ({
+const changeNewAlbumAction = res => ({
   type: actionTypes.CHANGE_NEW_ALBUM,
   newAlbum: res.albums
 })
 
-const changeUpListAction = (res) => ({
+const changeUpListAction = res => ({
   type: actionTypes.CHANGE_UP_LIST,
   topUpList: res.playlist
 })
 
-const changeNewListAction = (res) => ({
+const changeNewListAction = res => ({
   type: actionTypes.CHANGE_NEW_LIST,
   topNewList: res.playlist
 })
 
-const changeOriginListAction = (res) => ({
+const changeOriginListAction = res => ({
   type: actionTypes.CHANGE_ORIGIN_LIST,
   topOriginList: res.playlist
 })
 
-const changeSettleSingsAction = (res) => ({
+const changeSettleSingsAction = res => ({
   type: actionTypes.CHANGE_SETTLE_SONGER,
   settleSings: res.artists
 })
 
+const changeRankList = res => ({
+  type: actionTypes.CHANGE_RANK,
+  list: res.playlist.tracks.slice(0, 9)
+})
+
+export const getRankList = idx => {
+  return dispatch => {
+    getTopList(idx).then(res => {
+      dispatch(changeRankList(res))
+    })
+  }
+}
 
 export const getBanner = () => {
   return dispatch => {
     getTopBanner().then(res => {
-      dispatch(changeBannerAction(res));
+      dispatch(changeBannerAction(res))
     })
   }
 }
@@ -68,21 +80,21 @@ export const getAlbum = () => {
   }
 }
 
-export const getTopData = (idx) => {
+export const getTopData = idx => {
   return dispatch => {
     getTopList(idx).then(res => {
       switch (idx) {
         case 0:
-          dispatch(changeNewListAction(res));
-          break;
+          dispatch(changeNewListAction(res))
+          break
         case 2:
-          dispatch(changeOriginListAction(res));
-          break;
+          dispatch(changeOriginListAction(res))
+          break
         case 3:
-          dispatch(changeUpListAction(res));
-          break;
+          dispatch(changeUpListAction(res))
+          break
         default:
-          console.log("其他数据处理");
+          console.log('其他数据处理')
       }
     })
   }

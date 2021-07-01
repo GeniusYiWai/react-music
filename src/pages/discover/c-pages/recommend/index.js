@@ -4,7 +4,9 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { getBanner } from './store/actionCreators'
 import { Carousel } from 'antd'
 import './index.css'
-
+import Recommend from './c-cpns/hot-recommend'
+import Album from './c-cpns/new-album'
+import Rank from './c-cpns/ranking-list'
 function Index() {
   const dispatch = useDispatch()
   const { topBanners } = useSelector(
@@ -23,25 +25,28 @@ function Index() {
     color: '#fff',
     textAlign: 'center'
   }
-  const [imgUrl, setImgUrl] = useState('')
+  const [imgUrl, setImgUrl] = useState('http://p1.music.126.net/dWcgY4oIZ4A44IjSeKF_AQ==/109951166135588916.jpg?imageView&blur=40x20')
   const bannerChange = useCallback(
     (from, to) => {
-      setImgUrl(topBanners[to].imageUrl)
+      setImgUrl(topBanners[to].imageUrl+'?imageView&blur=40x20')
     },
     [topBanners]
   )
   return (
     <div className='container'>
-      {imgUrl}
       <Carousel
         effect='fade'
         autoplay
         beforeChange={(from, to) => bannerChange(from, to)}
-        style={{ backgroundImage: `url(${imgUrl})` }}
+        style={{
+          backgroundImage: `url(${imgUrl})`,
+          backgroundSize: '6000px',
+          backgroundPosition: 'center'
+        }}
       >
-        {topBanners.map(item => {
+        {topBanners.map((item,i) => {
           return (
-            <div>
+            <div key={i}>
               <h3 style={contentStyle}>
                 <img src={item.imageUrl} alt='' className='banner-img' />
               </h3>
@@ -49,6 +54,10 @@ function Index() {
           )
         })}
       </Carousel>
+
+      <Recommend />
+      <Album />
+      <Rank />
     </div>
   )
 }

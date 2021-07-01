@@ -1,0 +1,34 @@
+.rec-container {
+  width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  justify-content: flex-start;
+
+  .rec-item {
+    display: flex;
+    flex-direction: column;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 140px;
+    margin: 10px 50px;
+    &:after {
+      display: inline-block;
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: url('../../../../../../assets/img/sprite_cover.png') no-repeat;
+      background-position: 0 0;
+    }
+    img {
+      width: 140px;
+      border-radius: 2px;
+      height: 140px;
+      position: relative;
+    }
+  }
+}

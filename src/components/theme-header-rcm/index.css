@@ -1,0 +1,28 @@
+.thc-container {
+  margin-top: 10px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  border-bottom: 2px solid red;
+}
+.thc-container .thc-left {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.thc-container .thc-left .thc-left-item {
+  font-size: 14px;
+  margin: 0 20px;
+}
+.thc-container .thc-left .thc-left-item::after {
+  content: '|';
+  display: inline-block;
+  position: relative;
+  bottom: 2px;
+  left: 20px;
+}
+.thc-container .thc-right {
+  font-size: 14px;
+}

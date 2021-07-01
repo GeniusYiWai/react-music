@@ -8,7 +8,7 @@ export function getTopBanner() {
 
 export function getHotRecommend() {
   return request({
-    url: "/personalized"
+    url: "/personalized?limit=12"
   })
 }
 
